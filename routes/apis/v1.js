@@ -1,6 +1,6 @@
-const userController = require('../../controllers/apis/user');
+const articleController = require('../../controllers/apis/article');
 
 const express = require('express');
 let router = express.Router();
-router.use('/users', userController);
+router.use('/articles', articleController);
 module.exports = router;

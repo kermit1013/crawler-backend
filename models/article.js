@@ -1,15 +1,15 @@
 let mongoose = require('mongoose');
 let Schema = mongoose.Schema;
 
-var User = new Schema({
-    name: {
+var Article = new Schema({
+    subject: {
         type: String,
-        required : [ true, 'name is required'],
+        required : [ true, 'subject is required'],
         lowercase : true
     },
-    email: {
+    content: {
         type: String,
-        required : [ true, 'email is required'],
+        required : [ true, 'content is required'],
         unique : true,
         lowercase : true
     }
@@ -17,4 +17,4 @@ var User = new Schema({
     timestamps: true
 });
 
-module.exports = mongoose.model('User', User);
+module.exports = mongoose.model('Article', Article);
