@@ -110,6 +110,7 @@ const createArticle = async (req, res, next) => {
 }
 
 const editArticle = async (req, res, next) => {
+        const articleId = req.params.id;
 
         const {
             subject,
@@ -121,6 +122,15 @@ const editArticle = async (req, res, next) => {
             subject: subject,
             content: content
         };
+
+        let isArticleExists = await Article.findById(articleId);
+
+        if (!isArticleExists) {
+            return res.status(404).json({
+                'code': 'BAD_REQUEST_ERROR',
+                'description': 'No article found in the system'
+            });
+        }
 
         let updateArticle = await Article.findByIdAndUpdate(articleId, temp, {
             new: true
