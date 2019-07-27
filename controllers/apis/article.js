@@ -8,4 +8,6 @@ router.get('/:id', articleService.getArticleById);
 
 router.post('/', articleService.createArticle);
 
+router.put('/:id', articleService.editArticle);
+
 module.exports = router;

@@ -109,9 +109,36 @@ const createArticle = async (req, res, next) => {
     }
 }
 
+const editArticle = async (req, res, next) => {
+
+        const {
+            subject,
+            content
+         } = req.body;
+
+
+        const temp = {
+            subject: subject,
+            content: content
+        };
+
+        let updateArticle = await Article.findByIdAndUpdate(articleId, temp, {
+            new: true
+        });
+
+        if (updateArticle) {
+            return res.status(200).json({
+                'message': 'article updated successfully',
+                'data': updateArticle
+            });
+        } else {
+            throw new Error('something went worng');
+        }
+}
 
 module.exports = {
     getArticles: getArticles,
     getArticleById: getArticleById,
-    createArticle: createArticle
+    createArticle: createArticle,
+    editArticle: editArticle
 }
