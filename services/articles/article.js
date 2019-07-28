@@ -146,9 +146,40 @@ const editArticle = async (req, res, next) => {
         }
 }
 
+const deleteArticle = async (req, res, next) => {
+    try {
+        const articleId = req.params.id
+
+        let isArticleExists = await Article.findById(articleId);
+
+        if (!isArticleExists) {
+            return res.status(404).json({
+                'code': 'BAD_REQUEST_ERROR',
+                'description': 'No article found in the system'
+            });
+        }
+
+        let delArticle = await Article.findByIdAndDelete(articleId,);
+
+        if (delArticle) {
+            return res.status(201).json({
+                'message': 'article deleted successfully',
+            });
+        } else {
+            throw new Error('something went worng');
+        }
+    } catch (error) {
+        return res.status(500).json({
+            'code': 'SERVER_ERROR',
+            'description': 'something went wrong, Please try again'
+        });
+    }
+}
+
 module.exports = {
     getArticles: getArticles,
     getArticleById: getArticleById,
     createArticle: createArticle,
-    editArticle: editArticle
+    editArticle: editArticle,
+    deleteArticle: deleteArticle
 }

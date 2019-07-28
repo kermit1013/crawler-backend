@@ -10,4 +10,6 @@ router.post('/', articleService.createArticle);
 
 router.put('/:id', articleService.editArticle);
 
+router.delete('/:id', articleService.deleteArticle);
+
 module.exports = router;
