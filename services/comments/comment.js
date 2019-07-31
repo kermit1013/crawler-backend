@@ -25,12 +25,13 @@ const getComments = async (req, res, next) => {
     }
 }
 
-const createComment = async (req, res, next) => {
+const createArticle = async (req, res, next) => {
     try {
 
         const {
             content
         } = req.body;
+
 
         if (content === undefined || content === '') {
             return res.status(422).json({
@@ -38,7 +39,6 @@ const createComment = async (req, res, next) => {
                 'description': 'content is required',
                 'field': 'content'
             });
-        }
         }
 
 
