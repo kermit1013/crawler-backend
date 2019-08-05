@@ -4,7 +4,7 @@ let Schema = mongoose.Schema;
 var Comment = new Schema({
     articleId: {
         type: String,
-        required : [ true, 'subject is required'],
+        required : [ true, 'articleId is required'],
         unique : true,
         lowercase : true
     },
