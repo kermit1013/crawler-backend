@@ -6,7 +6,6 @@ var Comment = new Schema({
         type: String,
         required : [ true, 'content is required'],
         unique : true,
-        articleId : id,
         lowercase : true
     }
 }, {

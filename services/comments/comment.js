@@ -25,7 +25,7 @@ const getComments = async (req, res, next) => {
     }
 }
 
-const createArticle = async (req, res, next) => {
+const createComment = async (req, res, next) => {
     try {
 
         const {
@@ -40,7 +40,6 @@ const createArticle = async (req, res, next) => {
                 'field': 'content'
             });
         }
-
 
         const temp = {
             content: content
@@ -85,7 +84,7 @@ const editComment = async (req, res, next) => {
             });
         }
 
-        let updateComment = await Comment.findByIdAndUpdate(articleId, temp, {
+        let updateComment = await Comment.findByIdAndUpdate(commentId, temp, {
             new: true
         });
 
@@ -130,7 +129,7 @@ const deleteComment = async (req, res, next) => {
 }
 
 module.exports = {
-    getComment: getComments,
+    getComments: getComments,
     createComment: createComment,
     editComment: editComment,
     deleteComment: deleteComment
